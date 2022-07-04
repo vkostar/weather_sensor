@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -15,7 +17,8 @@ public class Sensor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 3, max = 30, message = "Name should be between 3 and 30 characters")
     @Column(name = "sensor_name")
     private String sensor_name;
 

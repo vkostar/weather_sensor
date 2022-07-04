@@ -1,17 +1,13 @@
 package com.kostar.weather_sensor.models;
 
-import lombok.Data;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "measurements")
 public class Measurements {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id_sensor")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -22,7 +18,7 @@ public class Measurements {
     private boolean raining;
 
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @JoinColumn(name = "sensor_id", referencedColumnName = "id")
     Sensor sensor;
 
     public Measurements() {
