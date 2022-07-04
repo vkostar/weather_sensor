@@ -1,6 +1,5 @@
 package com.kostar.weather_sensor.models;
 
-import lombok.Data;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -20,7 +19,7 @@ public class Sensor {
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 3, max = 30, message = "Name should be between 3 and 30 characters")
     @Column(name = "sensor_name")
-    private String sensor_name;
+    private String nameOfSensor;
 
     @OneToMany(mappedBy = "sensor")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -30,7 +29,7 @@ public class Sensor {
     }
 
     public Sensor(String sensor_name, List<Measurements> listOfMeasure) {
-        this.sensor_name = sensor_name;
+        this.nameOfSensor = sensor_name;
         this.listOfMeasure = listOfMeasure;
     }
 
@@ -42,12 +41,12 @@ public class Sensor {
         this.id = id;
     }
 
-    public String getSensor_name() {
-        return sensor_name;
+    public String getNameOfSensor() {
+        return nameOfSensor;
     }
 
-    public void setSensor_name(String sensor_name) {
-        this.sensor_name = sensor_name;
+    public void setNameOfSensor(String name_sensor) {
+        this.nameOfSensor = name_sensor;
     }
 
     public List<Measurements> getListOfMeasure() {
@@ -62,7 +61,7 @@ public class Sensor {
     public String toString() {
         return "Sensor{" +
                 "id=" + id +
-                ", sensor_name='" + sensor_name + '\'' +
+                ", nameOfSensor='" + nameOfSensor + '\'' +
                 ", listOfMeasure=" + listOfMeasure +
                 '}';
     }

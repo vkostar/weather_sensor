@@ -6,7 +6,6 @@ import com.kostar.weather_sensor.models.Sensor;
 public class MeasurementsDTO {
 
 
-
     private double value;
 
     private boolean raining;

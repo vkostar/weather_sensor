@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class SensorService {
@@ -31,5 +33,11 @@ public class SensorService {
     private Sensor convertToSensorAndEnrich(SensorDTO sensorDTO) {
         Sensor sensor = modelMapper.map(sensorDTO, Sensor.class);
         return sensor;
+    }
+
+    public Optional<Sensor> check(SensorDTO sensorDTO) {
+
+        return sensorRepository.findByNameOfSensor(sensorDTO.getNameOfSensor());
+
     }
 }
