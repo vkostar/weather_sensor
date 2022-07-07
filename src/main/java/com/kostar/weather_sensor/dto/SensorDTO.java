@@ -1,14 +1,18 @@
 package com.kostar.weather_sensor.dto;
 
 
+import com.kostar.weather_sensor.models.Measurements;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 public class SensorDTO {
 
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 3, max = 30, message = "Name should be between 3 and 30 characters")
     private String nameOfSensor;
+
 
     public String getNameOfSensor() {
         return nameOfSensor;

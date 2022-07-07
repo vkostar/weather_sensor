@@ -2,21 +2,34 @@ package com.kostar.weather_sensor.dto;
 
 import com.kostar.weather_sensor.models.Sensor;
 
+import javax.validation.constraints.*;
+
 
 public class MeasurementsDTO {
 
+    @NotNull
+    @Min(-100)
+    @Max(100)
+    private Double value;
 
-    private double value;
-
+    @NotNull
     private boolean raining;
+    //    @NotEmpty(message = "Name should not be empty")
+    SensorDTO sensor;
 
-    Sensor sensor;
+    public SensorDTO getSensor() {
+        return sensor;
+    }
 
-    public double getValue() {
+    public void setSensor(SensorDTO sensor) {
+        this.sensor = sensor;
+    }
+
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
@@ -28,11 +41,5 @@ public class MeasurementsDTO {
         this.raining = raining;
     }
 
-    public Sensor getSensor() {
-        return sensor;
-    }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
-    }
 }

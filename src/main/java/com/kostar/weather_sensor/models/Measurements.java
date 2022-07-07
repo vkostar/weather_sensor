@@ -1,6 +1,12 @@
 package com.kostar.weather_sensor.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Table(name = "measurements")
@@ -11,15 +17,22 @@ public class Measurements {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @Min(-100)
+    @Max(100)
     @Column(name = "value")
     private double value;
-
+    @NotNull
     @Column(name = "raining")
     private boolean raining;
-
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "sensor_id", referencedColumnName = "id")
+    @JoinColumn(name = "name_id", referencedColumnName = "id")
     Sensor sensor;
+
+    @Column(name = "date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
     public Measurements() {
     }
@@ -62,6 +75,14 @@ public class Measurements {
         this.sensor = sensor;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Measurements{" +
@@ -69,6 +90,7 @@ public class Measurements {
                 ", value=" + value +
                 ", raining=" + raining +
                 ", sensor=" + sensor +
+                ", date=" + date +
                 '}';
     }
 }
