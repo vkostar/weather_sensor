@@ -39,7 +39,6 @@ public class SensorControllers {
         sensorValidator.validate(sensorToAdd, bindingResult);
         if (bindingResult.hasErrors()) {
             returnErrorsToClient(bindingResult);
-
         }
         sensorService.registrate(sensorDTO);
         return ResponseEntity.ok(HttpStatus.OK);

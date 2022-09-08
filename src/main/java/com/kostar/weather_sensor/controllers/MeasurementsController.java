@@ -6,7 +6,6 @@ import com.kostar.weather_sensor.dto.MeasurementsDTO;
 import com.kostar.weather_sensor.models.Measurements;
 import com.kostar.weather_sensor.services.MeasurementService;
 import com.kostar.weather_sensor.services.SensorService;
-import com.kostar.weather_sensor.util.ErrorHandler;
 import com.kostar.weather_sensor.util.MeasureValidator;
 import com.kostar.weather_sensor.util.MeasurementErrorResponse;
 import com.kostar.weather_sensor.util.MeasurementException;
@@ -14,13 +13,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.kostar.weather_sensor.util.ErrorHandler.returnErrorsToClient;

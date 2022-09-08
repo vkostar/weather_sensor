@@ -90,7 +90,7 @@ public class Measurements {
                 ", value=" + value +
                 ", raining=" + raining +
                 ", sensor=" + sensor +
-                ", date=" + date +
+                ", date==" + date +
                 '}';
     }
 }
